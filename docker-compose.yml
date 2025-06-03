@@ -1,0 +1,16 @@
+services:
+  app:
+    image: namada/supply
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5002"
+    environment:
+      - TENDERMINT_URL=<..>
+    healthcheck:
+      test: curl --fail http://localhost:5002/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped

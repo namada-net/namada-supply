@@ -38,4 +38,4 @@ FROM docker.io/debian:bookworm-slim
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y ca-certificates curl
 WORKDIR /app
 COPY --from=builder /app/target/release/namada-supply-webserver /app/namada-supply-webserver
-ENTRYPOINT ["./app/namada-supply-webserver"]
+ENTRYPOINT ["./namada-supply-webserver"]
