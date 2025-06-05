@@ -25,9 +25,22 @@ pub async fn get_effective_supply(
         .get_effective_total_supply()
         .await
         .map_err(|e| {
-            tracing::error!("Failed to get total supply: {}", e);
+            tracing::error!("Failed to get effective supply: {}", e);
             ApiError::RpcTimeout
         })?;
+
+    Ok(supply)
+}
+
+#[debug_handler]
+pub async fn get_circulating_supply(
+    _headers: HeaderMap,
+    State(mut state): State<CommonState>,
+) -> Result<String, ApiError> {
+    let supply = state.client.get_circulating_supply().await.map_err(|e| {
+        tracing::error!("Failed to get circulating supply: {}", e);
+        ApiError::RpcTimeout
+    })?;
 
     Ok(supply)
 }

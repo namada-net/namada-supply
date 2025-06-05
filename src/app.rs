@@ -18,7 +18,7 @@ use tower_http::trace::TraceLayer;
 
 use crate::client::Client;
 use crate::config::AppConfig;
-use crate::handlers::{get_effective_supply, get_total_supply};
+use crate::handlers::{get_circulating_supply, get_effective_supply, get_total_supply};
 use crate::state::CommonState;
 
 lazy_static! {
@@ -41,6 +41,7 @@ impl ApplicationServer {
             Router::new()
                 .route("/total-supply", get(get_total_supply))
                 .route("/effective-supply", get(get_effective_supply))
+                .route("/circulating-supply", get(get_circulating_supply))
                 .with_state(state)
         };
 
