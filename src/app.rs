@@ -40,7 +40,7 @@ impl ApplicationServer {
             let state = CommonState::new(client);
             Router::new()
                 .route("/total-supply", get(get_total_supply))
-                .route("/effective-supply", get(get_effective_supply))
+                .route("/circulating-supply", get(get_effective_supply))
                 .with_state(state)
         };
 
