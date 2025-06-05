@@ -71,7 +71,7 @@ impl Client {
             let supply = rpc::get_effective_native_supply(&self.client)
                 .await
                 .map_err(|e| {
-                    tracing::error!("Failed to get total supply: {}", e);
+                    tracing::error!("Failed to get effective supply: {}", e);
                     "RPC Timeout".to_string()
                 })?;
             self.cache
