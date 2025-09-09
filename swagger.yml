@@ -1,0 +1,35 @@
+openapi: '3.0.2'
+info:
+  title: Namada Supply API
+  version: '1.0.0'
+servers:
+  - url: https://localhost:5002
+  - url: https://supply.testnet.siuuu.click
+paths:
+  /api/v1/total-supply:
+    get:
+      responses:
+        '200':
+          description: The total NAM supply
+          content:
+            text/plain:  
+              schema:
+                type: number
+  /api/v1/effective-supply:
+    get:
+      responses:
+        '200':
+          description: The effective NAM supply
+          content:
+            text/plain:  
+              schema:
+                type: number
+  /api/v1/circulating-supply:
+    get:
+      responses:
+        '200':
+          description: The circulating NAM supply
+          content:
+            text/plain:  
+              schema:
+                type: number
