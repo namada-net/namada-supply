@@ -32,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY_URL }}/heliaxdev/namada-supply
+          images: ${{ env.REGISTRY_URL }}/${{ github.repository }}/namada-supply
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
